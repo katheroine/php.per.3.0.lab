@@ -1,0 +1,14 @@
+<ruleset xmlns:xsi="http://w3.org" name="PHPLab_PER30" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+    <description>Ruleset for PER Coding Style only</description>
+
+    <arg name="colors"/>
+    <arg value="sp"/>
+    <arg name="extensions" value="php"/>
+
+    <config name="installed_paths" value="/var/www/vendor/squizlabs/php_codesniffer/src/Standards"/>
+
+    <file>public</file>
+
+    <rule ref="PSR1"/>
+    <rule ref="PSR12"/>
+</ruleset>

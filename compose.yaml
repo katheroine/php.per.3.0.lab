@@ -1,0 +1,11 @@
+name: per-cs-30-example
+
+services:
+
+  application:
+    container_name: per-cs-30-example-app
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www
