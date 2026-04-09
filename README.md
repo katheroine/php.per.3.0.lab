@@ -309,3 +309,137 @@ class HtmlDoc
 }
 
 ```
+
+## Keywords, types & predefined constants
+
+### Keywords
+
+##### ✤ Keywords case
+
+**All PHP reserved keywords MUST be in `lower case`.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+**Any new keywords added to future PHP versions MUST be in lower case.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+The PHP constants `true`, `false`, and `null` should be in `lower case` too.
+
+### Types
+
+##### ✤ Types case
+
+**All PHP reserved types MUST be in `lower case`.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+**Any new types added to future PHP versions MUST be in lower case.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Types short/long forms
+
+**Short form of type keywords MUST be used i.e. `bool` instead of `boolean`, `int` instead of `integer` etc.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+**`User.php`**
+
+```php
+class User
+{
+    public bool $registered = true;
+    public int $level = 10;
+}
+```
+
+##### ✤ Compound types structuring
+
+**Compound types** includes *intersection*, *union*, and mixed intersection and union type declarations.
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+**PHP requires that all compound types be structured as an ORed (unioned) series of ANDs (intersections).**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Intersection type structuring in series
+
+**And that each set of intersections be encased with parentheses.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Leading whitespaces at the begining of compound type symbol
+
+**The union symbol | and intersection symbol & MUST NOT have a leading space.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Trailing whitespaces at the end of compound type symbol
+
+**The union symbol | and intersection symbol & MUST NOT have a trailing space.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Leading whitespaces at the begining of compound type parenthesis
+
+**The parentheses MUST NOT have a leading space.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Trailing whitespaces at the end of compound type parenthesis
+
+**The parentheses MUST NOT have a trailing space.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Spliting a compound type with only intersections or only unions into multiple lines
+
+**If it is necessary to split a compound type into multiple lines and the type contains only intersections or only unions, then each line MUST have a single type.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Spliting a compound type with both intersections and unions into multiple lines
+
+**If it is necessary to split a compound type into multiple lines and the type contains both intersections and unions, then each line MUST have a single union segment.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+**All intersections in a segment MUST be on the same line.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Spliting a compound type and its symbol placement
+
+**The symbol on which the compound type is split MUST be at the start of each line.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+The following are correct ways to format compound types:
+
+```php
+function foo(int|string $a): User|Product
+{
+    // ...
+}
+
+function somethingWithReflection(
+    \ReflectionObject
+    |\ReflectionClass
+    |\ReflectionMethod
+    |\ReflectionParameter
+    |\ReflectionProperty $reflect
+): object|null {
+        // ...
+}
+
+function complex(array|(ArrayAccess&Traversable) $input): ArrayAccess&Traversable
+{
+    // ...
+}
+
+function veryComplex(
+    array
+    |(ArrayAccess&Traversable)
+    |(Traversable&Countable) $input): ArrayAccess&Traversable
+{
+    // ...
+}
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Union type with null
+
+**If one of the ORed conditions is null, it MUST be the last item in the list.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+##### ✤ Intersection type with null
+
+**An intersection of a single simple type with null SHOULD be abbreviated using the ? alternate syntax: ?T.**
+[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
