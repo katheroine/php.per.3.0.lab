@@ -853,3 +853,1117 @@ Specifically:
 
 **Abbreviations, acronyms, and initialisms SHOULD be treated like regular words, thus they SHOULD be written with an uppercase first character, followed by lowercase characters.**
 [🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
+
+## Classes
+
+The term "class" refers to all classes, interfaces, traits, and enums.
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+### Declaring classes
+
+##### ✤ Braces in empty class declaration
+
+**If class contains no additional declarations (such as an exception that exists only to extend another exception with a new type), then the body of the class SHOULD be abbreviated as {} and placed on the same line as the previous symbol, separated by a space.**
+
+For example:
+
+```php
+class MyException extends \RuntimeException {}
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+### Instantiating classes
+
+##### ✤ Parentheses in class instantiation
+
+**When instantiating a new class, parentheses MUST always be present even when there are no arguments passed to the constructor.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+For example:
+
+```php
+new Foo();
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+##### ✤ Accessing a class member immediately after instantiating
+
+**When accessing a class member immediately after instantiating a new class, the instantiation SHOULD NOT be wrapped in parentheses.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+For example:
+
+```php
+new Foo()->someMethod();
+new Foo()->someStaticMethod();
+new Foo()->someProperty;
+new Foo()::someStaticProperty;
+new Foo()::SOME_CONSTANT;
+```
+
+And the following SHOULD be avoided:
+
+```php
+(new Foo())->someMethod();
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+### Extending classes
+
+
+
+The following is a validly formatted class:
+
+
+##### ✤ Keyword `extends` placement in class definition
+
+**The `extends` keyword MUST be declared on the same line as the class name.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements \ArrayAccess, \Countable
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+```php
+class User extends Technician
+{
+}
+```
+
+##### ✤ List of extends split acros multi lines in class definition
+
+**Lists of extends (in the case of interfaces) MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+**When doing so, the first item in the list MUST be on the next line, and there MUST be only one interface per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements
+    \ArrayAccess,
+    \Countable,
+    \Serializable
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+```php
+interface Evidentiable extends
+    Presentable,
+    Identifiable
+{
+}
+```
+
+### Implementing interfaces
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements \ArrayAccess, \Countable
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+##### ✤ Keyword `implements` placement in class definition
+
+**The `implements` keyword MUST be declared on the same line as the class name.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements \ArrayAccess, \Countable
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+```php
+class Person implements Presentable
+{
+}
+```
+
+##### ✤ List of `implements` split acros multi lines in class definition
+
+**Lists of implements MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+**When doing so, the first item in the list MUST be on the next line, and there MUST be only one interface per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+For example:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements
+    \ArrayAccess,
+    \Countable,
+    \Serializable
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+```php
+class Person implements
+    Presentable,
+    Identifiable
+{
+}
+```
+
+##### ✤ Opening brace placement in class definition
+
+**The opening brace for the class MUST go on its own line.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+**The opening brace for the class MUST NOT be preceded or followed by a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+##### ✤ Closing brace placement in class definition
+
+**The closing brace for the class MUST go on its own line.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+**The closing brace line MUST immediately following the last line of the class body.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+**The closing brace line MUST NOT be preceded by a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+**Any closing brace MUST NOT be followed by any comment or statement on the same line.**
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+
+The following is a validly formatted class:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OtherVendor\OtherPackage\BazClass;
+
+class ClassName extends ParentClass implements \ArrayAccess, \Countable
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+### Using traits
+
+##### ✤ Keyword `use` placement in class definition
+
+**The `use` keyword used inside the classes to implement traits MUST be declared on the next line after the opening brace.**
+[🔗](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+class Technician
+{
+    use Skilled;
+}
+```
+
+##### ✤ Number of trait including per line in class definition
+
+**Each individual trait that is imported into a class MUST be included one-per-line and each inclusion MUST have its own use import statement.**
+[🔗](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+The following is a correct example of trait usage.
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+use Vendor\Package\SecondTrait;
+use Vendor\Package\ThirdTrait;
+
+class ClassName
+{
+    use FirstTrait;
+    use SecondTrait;
+    use ThirdTrait;
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+use Vendor\Package\SecondTrait;
+use Vendor\Package\ThirdTrait;
+
+class ClassName
+{
+    use FirstTrait;
+    use SecondTrait;
+    use ThirdTrait;
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+class Technician extends Person
+{
+    use Educated;
+    use Skilled;
+}
+```
+
+##### ✤ Closing brace after the use import placement in class definition
+
+**When the class has nothing after the use import statement, the class closing brace MUST be on the next line after the use import statement.**
+[🔗](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+##### ✤ Blank line after the use import placement in class definition
+
+**Otherwise, it MUST have a blank line after the use import statement.**
+[🔗](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+
+    private $property;
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+class Technician extends Person
+{
+    use Educated;
+    use Skilled;
+
+    public function isVirtual(): bool
+    {
+        $isVirtual = ! empty($this->educations) && ! empty($this->skills);
+
+        return $isVirtual;
+    }
+}
+```
+
+##### ✤ Keywords `insteadof` and `as`
+
+**When using the `insteadof` and `as` operators they must be in separated lines with indentations.**
+[🔗](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+<?php
+
+class Talker
+{
+    use A;
+    use B {
+        A::smallTalk insteadof B;
+    }
+    use C {
+        B::bigTalk insteadof C;
+        C::mediumTalk as FooBar;
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#42-using-traits)
+
+```php
+class Technician extends Person
+{
+    use Educated {
+        Educated::isVirtual insteadof Skilled;
+    }
+
+    use Skilled {
+        Skilled::isVirtual as isSkilled;
+    }
+}
+```
+
+### Modifier keywords
+
+Classes, properties, and methods have numerous keyword modifiers that alter how the engine and language handles them. When present, they MUST be in the following order:
+
+* Inheritance modifier: abstract or final
+* Visibility modifier: public, protected, or private
+* Set-visibility modifier: public(set), protected(set), or private(set)
+* Scope modifier: static
+* Mutation modifier: readonly
+* Type declaration
+* Name
+
+All keywords MUST be on a single line, and MUST be separated by a single space. All keywords MUST be all lower-case. The public keyword MAY be omitted when using a set-visibility on a public-read property.
+
+The following is a correct example of modifier keyword usage:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+abstract class ClassName
+{
+    protected static string $foo;
+
+    private readonly int $beep;
+
+    protected private(set) string $name;
+
+    protected(set) string $boop;
+
+    abstract protected function zim();
+
+    final public static function bar()
+    {
+        // ...
+    }
+}
+
+readonly class ValueObject
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#46-modifier-keywords)
+
+##### ✤ Keyword `abstract` placement
+
+**When present, the `abstract` declarations MUST precede the visibility declaration.**
+[🔗](https://www.php-fig.org/psr/psr-12/#46-abstract-final-and-static)
+
+`abstract protected function hasMiddleName(): bool;`
+
+##### ✤ Keyword `final` placement
+
+**When present, the `final` declarations MUST precede the visibility declaration.**
+[🔗](https://www.php-fig.org/psr/psr-12/#46-abstract-final-and-static)
+
+`final public function isVirtual(): bool`
+
+##### ✤ Keyword `static` placement
+
+**When present, the `static` declaration MUST come after the visibility declaration.**
+[🔗](https://www.php-fig.org/psr/psr-12/#46-abstract-final-and-static)
+
+`public static function getCount(): int`
+
+##### ✤ Keyword `readonly` palcement
+
+**When present, the `readonly` declaration MUST come after the visibility declaration.**
+
+`private readonly int $beep;`
+
+### Class constants
+
+##### ✤ Class constant visiblity declaration
+
+**Visibility MUST be declared on all constants.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+```php
+public const STATUS_HALTING = 'halting';
+public const STATUS_CERTAIN = 'certain';
+public const STATUS_INVOLVED = 'involved';
+```
+
+##### ✤ Class constant declarations per statement
+
+**There MUST NOT be more than one constant declared per statement.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+##### ✤ Single underscore prefix in constant names for indication of non-public visibility
+
+**Constant names MUST NOT be prefixed with a single underscore to indicate protected or private visibility.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+**That is, an underscore prefix explicitly has no meaning.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+### Class properties
+
+##### ✤ Property visiblity declaration
+
+**Visibility MUST be declared on all properties.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+```php
+private static $count;
+protected $isRegistered = false;
+public $level = 0;
+```
+
+**If set-visibility is specified, then the general visibility MAY be omitted.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+##### ✤ Single underscore prefix in property names for indication of non-public visibility
+
+**Property names MUST NOT be prefixed with a single underscore to indicate protected or private visibility.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+**That is, an underscore prefix explicitly has no meaning.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+* Wrong:
+
+```php
+private static $_count = 0;
+protected $_isRegistered = false;
+public $level = 0;
+```
+
+* Right:
+
+```php
+private static $count = 0;
+protected $isRegistered = false;
+public $level = 0;
+```
+
+##### ✤ Keyword `var` (used to declare property)
+
+**The `var` keyword MUST NOT be used to declare a property.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+* Wrong:
+
+```php
+var static $count = 0;
+var $isRegistered = false;
+var $level = 0;
+```
+
+* Right:
+
+```php
+private static $count;
+protected $isRegistered = false;
+public $level = 0;
+```
+
+##### ✤ Property type declaration
+
+**There MUST be a space between type declaration and property name.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+A property declaration looks like the following:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public $foo = null;
+    public static int $bar = 0;
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+```php
+private static int $count = 0;
+protected bool $isRegistered = false;
+public int $level = 0;
+```
+
+##### ✤ Property declarations per statement
+
+**There MUST NOT be more than one property declared per statement.**
+[🔗](https://www.php-fig.org/per/coding-style/#43-properties-and-constants)
+
+* Wrong:
+
+```php
+public int $level = 0, $score = 5;
+```
+
+* Right:
+
+```php
+public int $level = 0;
+public int $score = 5;
+```
+
+### Class methods
+
+##### ✤ Single underscore prefix in method names for indication of non-public visibility
+
+**Method names MUST NOT be prefixed with a single underscore to indicate protected or private visibility.**
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+**That is, an underscore prefix explicitly has no meaning.**
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+* Wrong:
+
+```php
+protected function _hasMiddleName()
+{
+    return false;
+}
+```
+
+* Right:
+
+```php
+protected function hasMiddleName()
+{
+    return false;
+}
+```
+
+##### ✤ Method visiblity declaration
+
+**Visibility MUST be declared on all methods.**
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+```php
+abstract protected function hasMiddleName();
+
+public function getName()
+{
+    $name = $firstName
+        . $this->hasMiddleName() ? $this->middleName : ' '
+        . $lastName;
+
+    return $name;
+}
+
+public function getPesel()
+{
+    return $this->pesel;
+}
+```
+
+##### ✤ Space after method name in method definition
+
+**Method names MUST NOT be declared with space after the method name.**
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+`public function getPesel()`
+
+##### ✤ Space after opening parethensis of argument list in method definition/call
+
+**There MUST NOT be a space after the opening parenthesis.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+##### ✤ Space before closing parethensis of argument list in method definition/call
+
+**There MUST NOT be a space before the closing parenthesis.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+A method declaration looks like the following. Note the placement of parentheses, commas, spaces, and braces:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function fooBarBaz($arg1, &$arg2, $arg3 = [])
+    {
+        // ...
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+##### ✤ Space before coma on argument list in method definition/call
+
+**In the argument list, there MUST NOT be a space before each comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+##### ✤ Space after coma on argument list in method definition/call
+
+**In the argument list, there MUST be one space after each comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+The following lines show correct calls:
+
+```php
+<?php
+
+bar();
+$foo->bar($arg1);
+Foo::bar($arg2, $arg3);
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+
+`public function setName($firstName, $middleName, $lastName)`
+
+##### ✤ List of method arguments with reference operator
+
+There MUST NOT be a space between the variadic three dot operator and the argument name:
+**When using the reference operator & before an argument, there MUST NOT be a space after it.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName(?string $arg1, ?int &$arg2): ?string
+    {
+        return 'foo';
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+`public function setAuthor(HTMLDocAuthor &$htmlDocAuthor)`
+
+##### ✤ List of method arguments with variadic three dot operator
+
+**There MUST NOT be a space between the variadic three dot operator and the argument name.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+```php
+public function process(string $algorithm, ...$parts)
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+`public function addEducations(...$educations)`
+
+##### ✤ List of method arguments with reference and variadic three dot operators
+
+**When combining both the reference operator and the variadic three dot operator, there MUST NOT be any space between the two of them.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+```php
+public function process(string $algorithm, &...$parts)
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+##### ✤ Method arguments with default values placement
+
+**Method parameters with default values MUST go at the end of the argument list.**
+[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+
+For example:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function foo(int $arg1, &$arg2, $arg3 = [])
+    {
+        // ...
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+`public function setName($firstName, $lastName, $middleName = '')`
+
+##### ✤ List of method arguments split acros multi lines in method definition/call
+
+**Argument lists MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+##### ✤ Arguments placement on list of method arguments split acros multi lines in method definition/call
+
+**When doing so, the first item in the list MUST be on the next line, and there MUST be only one argument per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+##### ✤ Number of arguments per line on list of method arguments split acros multi lines in method definition/call
+
+**There MUST be only one argument per line.**
+[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+
+##### ✤ Closing parenthesis and opening brace in method with list of method arguments split acros multi lines in method definition
+
+**When the argument list is split across multiple lines, the closing parenthesis and opening brace MUST be placed together on their own line with one space between them.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+For example:
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function aVeryLongMethodName(
+        ClassTypeHint $arg1,
+        &$arg2,
+        array $arg3 = [],
+    ) {
+        // ...
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+```php
+public function setName(
+    $firstName,
+    $lastName,
+    $middleName = '') {
+}
+```
+
+##### ✤ Braces in empty method declaration
+
+**If a method contains no statements or comments (such as an empty no-op implementation or when using constructor property promotion), then the body SHOULD be abbreviated as {} and placed on the same line as the previous symbol, separated by a space.**
+
+For example:
+
+```php
+class Point
+{
+    public function __construct(private int $x, private int $y) {}
+
+    // ...
+}
+```
+
+```php
+class Point
+{
+    public function __construct(
+      public readonly int $x,
+      public readonly int $y,
+    ) {}
+}
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+##### ✤ Single argument being split across multiple lines in method call
+
+**A single argument being split across multiple lines (as might be the case with a closure or array) does not constitute splitting the argument list itself.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+```php
+<?php
+
+$foo->bar(
+    $longArgument,
+    $longerArgument,
+    $muchLongerArgument,
+);
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+##### ✤ Named argument in method call
+
+**If using named arguments, there MUST NOT be a space between the argument name and colon.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+**And there MUST be a single space between the colon and the argument value**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+For example:
+
+```php
+somefunction($a, b: $b, c: 'c');
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+##### ✤ Method chaining
+
+**Method chaining MAY be put on separate lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+**When doing so, the first method MUST be on the next line.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+For example:
+
+```php
+$someInstance
+    ->create()
+    ->prepare()
+    ->run();
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+##### ✤ Return type declaration in method definition
+
+**When you have a return type declaration present, there MUST be one space after the colon followed by the type declaration. The colon and declaration MUST be on the same line as the argument list closing parenthesis with no spaces between the two characters.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+For example:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName(int $arg1, $arg2): string
+    {
+        return 'foo';
+    }
+
+    public function anotherFunction(
+        string $foo,
+        string $bar,
+        int $baz,
+    ): string {
+        return 'foo';
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+`public function getName(): string`
+
+##### ✤ Return type declaration with nullable type in method definition
+
+**In nullable type declarations, there MUST NOT be a space between the question mark and the type.**
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+For example:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName(?string $arg1, ?int &$arg2): ?string
+    {
+        return 'foo';
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+
+`public function getPesel(): ?int`
+
+##### ✤ Opening brace placement in method definition
+
+**The opening brace MUST go on its own line.**
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+##### ✤ Closing brace placement in method definition
+
+**The closing brace MUST go on the next line following the body.**
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+##### ✤ Comments or statements following closing brace in method definition
+
+**Any closing brace MUST NOT be followed by any comment or statement on the same line.**
+[🔗](https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods)
+
+```php
+public function getName(): string
+{
+}
+```
+
+##### ✤ Space between method name and opening parenthesis in method call
+
+**When making a method call, there MUST NOT be a space between the method or function name and the opening parenthesis.**
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
+
+```php
+$htmlDoc->setAuthor($htmlDocAuthor);
+```
+
+### Class instantiating
+
+##### ✤ Parentheses in class instantiating
+
+**When instantiating a new class, parentheses MUST always be present even when there are no arguments passed to the constructor.**
+[🔗](https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods)
+
+```php
+new Foo();
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods)
+
+```php
+$user = new User();
+```
+
+### Anonymous classes
+
+Anonymous Classes MUST follow the same guidelines and principles as closures in the above section.
+
+```php
+<?php
+
+$instance = new class {};
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+##### ✤ Opening brace, class keyword and list of implements placement
+
+**The opening brace MAY be on the same line as the class keyword so long as the list of implements interfaces does not wrap. If the list of interfaces wraps, the brace MUST be placed on the line immediately following the last interface.**
+[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+```php
+<?php
+
+// Brace on the same line
+$instance = new class extends \Foo implements \HandleableInterface {
+    // Class content
+};
+
+// Brace on the next line
+$instance = new class extends \Foo implements
+    \ArrayAccess,
+    \Countable,
+    \Serializable
+{
+    // Class content
+};
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+```php
+$human = new class {};
+```
+
+```php
+$human = new class implements
+    Identifiable,
+    Presentable
+{
+};
+```
