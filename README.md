@@ -854,6 +854,15 @@ Specifically:
 **Abbreviations, acronyms, and initialisms SHOULD be treated like regular words, thus they SHOULD be written with an uppercase first character, followed by lowercase characters.**
 [🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
 
+## Functions and closures
+
+##### ✤ Function callable references
+
+A function or method may be referenced in a way that creates a closure out of it, by providing `...` in place of arguments.
+
+**If so, the `...` MUST NOT include any whitespace before or after. That is, the correct format is foo(...).**
+[🔗](https://www.php-fig.org/per/coding-style/#48-function-callable-references)
+
 ## Classes
 
 The term "class" refers to all classes, interfaces, traits, and enums.
@@ -1967,3 +1976,184 @@ $human = new class implements
 {
 };
 ```
+
+### Property Hooks
+
+Object properties may also include hooks, which have a number of syntactic options.
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Opening brace in the long form hook definition
+
+**The opening brace MUST be on the same line as the property.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**The opening brace MUST be separated from the property name or its default value by a single space.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Closing brace in the long form hook definition
+
+**The closing brace MUST be on its own line, and have no comment following it.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Body indentation in the long form hook definition
+
+**The entire body of the hook definition MUST be indented one level.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**The body of each hook MUST be indented one level.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Multiple hook declaration
+
+**If multiple hooks are declared, they MUST be separated by at least a single line break.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**They MAY be separated by an additional blank line to aid readability.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+For example:
+
+```php
+class Example
+{
+    public string $newName = 'Me' {
+        set(string $value) {
+            if (strlen($value) < 3) {
+                throw new \Exception('Too short');
+            }
+            $this->newName = ucfirst($value);
+        }
+    }
+
+    public string $department {
+        get {
+            return $this->values[__PROPERTY__];
+        }
+        set {
+            $this->values[__PROPERTY__] = $value;
+        }
+    }
+    // or
+    public string $department {
+        get {
+            return $this->values[__PROPERTY__];
+        }
+
+        set {
+            $this->values[__PROPERTY__] = $value;
+        }
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+Property hooks also support multiple short-hook variations.
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Argument name and type in the short form set hook definition
+
+**For a set hook, if the argument name and type do not need to be redefined, then they MAY be omitted.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**If a hook consists of a single expression, then PHP allows it to be shortened using =>.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Spaces around => symbol in the short form hook definition with =>
+
+**There MUST be a single space on either side of the => symbol.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Body indentation in the short form hook definition with =>
+
+**The body MUST begin on the same line as the hook name and =>.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**Wrapping is allowed if the expression used allows for wrapping, using the rules defined elsewhere in this document.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+```php
+class Example
+{
+    public string $myName {
+        get => __CLASS__;
+    }
+
+    public string $newName {
+        set => ucfirst($value);
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+If there is only one hook implementation, that hook uses the short-hook syntax, that hook expression does not contain any wrapping, then the hook MAY be listed entirely inline.
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ The inline hook name and the opening brace separation
+
+**The inline hook name MUST be separated from the opening brace and the arrow operator by a single space.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ The inline hook expression semicolon and the closing brace separation
+
+**The semicolon ending of the inline hook MUST be separated from the closing brace by a single space.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+For example:
+
+```php
+class Example
+{
+    public string $myName { get => __CLASS__; }
+
+    public string $newName { set => ucfirst($value); }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+##### ✤ Property hook and constructor-promoted property
+
+**Property hooks MAY also be defined in constructor-promoted properties.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**However, they MUST be only a single hook, with a short-syntax body, defined on a single line as above.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+**If those criteria are not met, then the promoted property MUST NOT have any hooks defined inline.**
+[🔗](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+```php
+class Example
+{
+    public function __construct(
+        public string $name { set => ucfirst($value); }
+    ) {}
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+The following is not allowed due to the hook being too complex:
+
+```php
+class Example
+{
+    public function __construct(
+        public string $name {
+            set {
+                if (strlen($value) < 3) {
+                    throw new \Exception('Too short');
+                }
+                $this->newName = ucfirst($value);
+            }
+        }
+    ) {}
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
