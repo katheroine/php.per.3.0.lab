@@ -291,12 +291,12 @@ class HtmlDoc
     public $languageCode = 'en-GB';
     public $charset = 'utf-8';
     public $language = 'english';
-    public $description = 'PSR-12 example document';
-    public $keywords = 'php,psr,psr-12';
+    public $description = 'PER Coding Style example document';
+    public $keywords = 'php,psr,per';
     public $author;
-    public $title = 'Some PSR-12 example page';
-    public $header = 'PSR-12 example';
-    public $footer = 'Copyright PHP.PSR-12.lab 2026';
+    public $title = 'Some PER Coding Style example page';
+    public $header = 'PER Coding Style example';
+    public $footer = 'Copyright PHP.PER.3.0.lab 2026';
     public $content = 'Hi, there!';
 
     public function setAuthor(HTMLDocAuthor &$htmlDocAuthor)
@@ -308,6 +308,360 @@ class HtmlDoc
     }
 }
 
+```
+
+## Header of a PHP file
+
+##### ✤ Header of a PHP file contents
+
+**The header of a PHP file may consist of a number of different blocks.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+##### ✤ Blank line separators of the blocks in a header of a PHP file
+
+**If present, each of the blocks (below) MUST be separated by a single blank line and MUST not contain a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+##### ✤ Order of the blocks in a header of a PHP file
+
+**Each block MUST be in the order listed below, although blocks that are not relevant may be omitted:**
+* **Opening `<?php` tag.**
+* **File-level docblock.**
+* **One or more declare statements.**
+* **The namespace declaration of the file.**
+* **One or more class-based use import statements.**
+* **One or more function-based use import statements.**
+* **One or more constant-based use import statements.**
+* **The remainder of the code in the file.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+**`HtmlDoc.php`**
+
+```php
+<?php
+
+/*
+ * This file is part of the PHP.lab package.
+ *
+ * (c) 2026 Katarzyna Krasińska <katheroine@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace PHPLab\StandardPSR12;
+
+use PHPLab\StandardPSR12\HtmlDocAuthor;
+
+class HtmlDoc
+{
+}
+
+```
+
+##### ✤ Header of the files with mix of HTML and PHP
+
+**When a file contains a mix of HTML and PHP, any of the above sections may still be used.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+**If so, they MUST be present at the top of the file, even if the remainder of the code consists of a closing PHP tag and then a mixture of HTML and PHP.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+**`view.php`**
+
+```php
+<?php
+
+/*
+ * This file is part of the PHP.lab package.
+ *
+ * (c) 2026 Katarzyna Krasińska <katheroine@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace PHPLab\StandardPERCS;
+
+use PHPLab\StandardPERCS\HtmlDocAuthor;
+
+$htmlDoc = new HtmlDoc();
+$htmlDocAuthor = new HtmlDocAuthor();
+$htmlDoc->setAuthor($htmlDocAuthor);
+
+?>
+<!doctype html>
+<html lang="<?= $htmlDoc->languageCode ?>">
+  <head>
+    <meta charset="<?= $htmlDoc->charset ?>">
+    <meta name="language" content="<?= $htmlDoc->language ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?= $htmlDoc->description ?>">
+    <meta name="keywords" content="<?= $htmlDoc->keywords ?>">
+    <meta name="author" content="<?= $htmlDoc->author['name'] ?> <<?= $htmlDoc->author['email'] ?>>">
+    <title><?= $htmlDoc->title ?></title>
+  </head>
+  <body>
+    <?php if (isset($htmlDoc->header)): ?>
+    <header>
+        <?= $htmlDoc->header ?>
+    </header>
+    <?php endif; ?>
+    <?php if (isset($htmlDoc->content)): ?>
+    <div id="content">
+        <?= $htmlDoc->content ?>
+    </div>
+    <?php endif; ?>
+    <?php if (isset($htmlDoc->footer)): ?>
+    <footer>
+        <?= $htmlDoc->footer ?>
+    </footer>
+    <?php endif; ?>
+  </body>
+</html>
+
+```
+
+##### ✤ Opening `<?php` tag
+
+**When the opening `<?php` tag is on the first line of the file, it MUST be on its own line with no other statements unless it is a file containing markup outside of PHP opening and closing tags.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+**`<?php` tag MUST always be lower case.**
+[🔗]()
+
+## Directives
+
+##### ✤ Declare statements formatting
+
+**Declare statements MUST contain no spaces and MUST be exactly `declare(strict_types=1)` (with an optional semi-colon terminator).**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+**`HtmlDocAuthor.php`**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace PHPLab\StandardPERCS;
+
+class HtmlDocAuthor
+{
+    const EMAIL_DOMAIN = 'php.lab';
+
+    public $name = 'Some Author';
+    public $email = 'author@' . self::EMAIL_DOMAIN;
+}
+
+```
+
+##### ✤ Block declare statements formatting
+
+**Block declare statements are allowed and MUST be formatted as below. Note position of braces and spacing:**
+```php
+declare(ticks=1) {
+
+    // some code
+
+}
+```
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+##### ✤ Strict types declaration formatting in files containing markup outside PHP opening and closing tags
+
+**When wishing to declare strict types in files containing markup outside PHP opening and closing tags, the declaration MUST be on the first line of the file and include an opening PHP tag, the strict types declaration and closing tag.**
+
+For example:
+
+```php
+<?php declare(strict_types=1) ?>
+<html>
+<body>
+    <?php
+        // ...
+    ?>
+</body>
+</html>
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+**`view.php`**
+
+```php
+<?php declare(strict_types=1) ?>
+<!doctype html>
+<html lang="<?= $htmlDoc->languageCode ?>">
+  <head>
+    <meta charset="<?= $htmlDoc->charset ?>">
+    <meta name="language" content="<?= $htmlDoc->language ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?= $htmlDoc->description ?>">
+    <meta name="keywords" content="<?= $htmlDoc->keywords ?>">
+    <meta name="author" content="<?= $htmlDoc->author['name'] ?> <<?= $htmlDoc->author['email'] ?>>">
+    <title><?= $htmlDoc->title ?></title>
+  </head>
+  <body>
+    <?php if (isset($htmlDoc->header)): ?>
+    <header>
+        <?= $htmlDoc->header ?>
+    </header>
+    <?php endif; ?>
+    <?php if (isset($htmlDoc->content)): ?>
+    <div id="content">
+        <?= $htmlDoc->content ?>
+    </div>
+    <?php endif; ?>
+    <?php if (isset($htmlDoc->footer)): ?>
+    <footer>
+        <?= $htmlDoc->footer ?>
+    </footer>
+    <?php endif; ?>
+  </body>
+</html>
+
+```
+
+## Imports
+
+##### ✤ Use declarations placement
+
+**Import statements MUST never begin with a leading backslash.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+* Wrong:
+
+```php
+use \PHPLab\StandardPERCS\HtmlDoc;
+use \PHPLab\StandardPERCS\HtmlDocAuthor;
+```
+
+* Right:
+
+```php
+use PHPLab\StandardPERCS\HtmlDoc;
+use PHPLab\StandardPERCS\HtmlDocAuthor;
+```
+
+##### ✤ Fully qualified import statements
+
+**Import statements MUST always be fully qualified.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+The following example illustrates a complete list of all blocks:
+
+```php
+<?php
+
+/**
+ * This file contains an example of coding styles.
+ */
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\SomeNamespace\ClassD as D;
+use Vendor\Package\AnotherNamespace\ClassE as E;
+use SomeVendor\Pack\ANamespace\SubNamespace\ClassF;
+
+use function Vendor\Package\{functionA, functionB, functionC};
+use function Another\Vendor\functionD;
+
+use const Vendor\Package\{CONSTANT_A, CONSTANT_B, CONSTANT_C};
+use const Another\Vendor\CONSTANT_D;
+
+/**
+ * FooBar is an example class.
+ */
+class FooBar
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+* Wrong:
+
+```php
+use StandardPERCS\HtmlDoc;
+use HtmlDocAuthor;
+```
+
+* Right:
+
+```php
+use PHPLab\StandardPERCS\HtmlDoc;
+use PHPLab\StandardPERCS\HtmlDocAuthor;
+```
+
+##### ✤ Import with compound namespaces
+
+**When using compound namespaces, there MUST NOT be more than two sub-namespaces within the group.**
+[🔗](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+That is, the following is allowed:
+
+```php
+<?php
+
+use Vendor\Package\SomeNamespace\{
+    SubnamespaceOne\ClassA,
+    SubnamespaceOne\ClassB,
+    SubnamespaceTwo\ClassY,
+    ClassZ,
+};
+```
+
+And the following would not be allowed:
+
+```php
+<?php
+
+use Vendor\Package\SomeNamespace\{
+    // This has too many namespace segments to be in a group
+    SubnamespaceOne\AnotherNamespace\ClassA,
+    SubnamespaceOne\ClassB,
+    ClassZ,
+};
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#3-declare-statements-namespace-and-import-statements)
+
+* Right:
+
+```php
+use PHPLab\StandardPSR12\{
+    HtmlDoc,
+    HtmlDocAuthor,
+    Language\EngGBLangTrait
+};
+```
+
+```php
+use PHPLab\{
+    StandardPSR12\HtmlDoc,
+    StandardPSR12\HtmlDocAuthor
+};
+
+use PHPLab\StandardPSR12\Language\EngGBLangTrait;
+```
+
+* Wrong:
+
+```php
+use PHPLab\{
+    StandardPSR12\HtmlDoc,
+    StandardPSR12\HtmlDocAuthor,
+    StandardPSR12\Language\EngGBLangTrait
+};
 ```
 
 ## Keywords, types & predefined constants
@@ -352,7 +706,8 @@ class User
 ##### ✤ Compound types structuring
 
 **Compound types** includes *intersection*, *union*, and mixed intersection and union type declarations.
-[🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
 
 **PHP requires that all compound types be structured as an ORed (unioned) series of ANDs (intersections).**
 [🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
@@ -443,3 +798,58 @@ function veryComplex(
 
 **An intersection of a single simple type with null SHOULD be abbreviated using the ? alternate syntax: ?T.**
 [🔗](https://www.php-fig.org/per/coding-style/#25-keywords-and-types)
+
+## Trailing commas
+
+Numerous PHP constructs allow a sequence of values to be separated by a comma, and the final item may have an optional comma. Examples include array key/value pairs, function arguments, closure use statements, `match()` statement branches, etc.
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
+
+**If that list is contained on a single line, then the last item MUST NOT have a trailing comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
+
+**If the list is split across multiple lines, then the last item MUST have a trailing comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
+
+The following are examples of correct comma placement:
+
+```php
+function beep(string $a, string $b, string $c)
+{
+    // ...
+}
+
+function beep(
+    string $a,
+    string $b,
+    string $c,
+) {
+    // ...
+}
+
+$arr = ['a' => 'A', 'b' => 'B', 'c' => 'C'];
+
+$arr = [
+    'a' => 'A',
+    'b' => 'B',
+    'c' => 'C',
+];
+
+$result = match ($a) {
+    'foo' => 'Foo',
+    'bar' => 'Bar',
+    default => 'Baz',
+};
+```
+
+## Naming
+
+This PSR RECOMMENDS following the php-src coding standards with regard to abbreviations and acronyms.
+
+Specifically:
+
+**Abbreviations and acronyms as well as initialisms SHOULD be avoided wherever possible, unless they are much more widely used than the long form (e.g. HTTP or URL).**
+[🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
+
+**Abbreviations, acronyms, and initialisms SHOULD be treated like regular words, thus they SHOULD be written with an uppercase first character, followed by lowercase characters.**
+[🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
