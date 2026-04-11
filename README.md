@@ -1450,7 +1450,7 @@ foreach ($this->skills as $skillCodename => $skill) {
 }
 ```
 
-## Control structure `try` - `catch` - `finally`
+### Control structure `try` - `catch` - `finally`
 
 A `try-catch-finally` block looks like the following. Note the placement of parentheses, spaces, and braces.
 
@@ -1470,7 +1470,433 @@ try {
 
 -- [PSR Documentation](https://www.php-fig.org/per/coding-style/#56-try-catch-finally)
 
-## Functions and closures
+## Closures & functions
+
+##### ✤ Space after `function` keyword in closure definition
+
+**Closures, also known as anonymous functions, MUST be declared with a space after the function keyword.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space before and after the `use` keyword in closure definition
+
+**And a space before and after the `use` keyword.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space after function name in function definition
+
+**Function names MUST NOT be declared with space after the method name.**
+[🔗](https://www.php-fig.org/psr/psr-12/#44-methods-and-functions)
+
+```php
+function separate()
+{
+    print('<br>');
+}
+```
+
+### Argument list
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function foo(int $arg1, &$arg2, $arg3 = [])
+    {
+        // method body
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+
+##### ✤ Space after opening parethensis of argument list in closure definition/call
+
+**There MUST NOT be a space after the opening parenthesis of the argument list.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space before closing parethensis of argument list in closure definition/call
+
+**There MUST NOT be a space before the closing parenthesis of the argument list.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space before coma on argument list in closure definition/call
+
+**In the argument list, there MUST NOT be a space before each comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space after coma on argument list in closure definition/call
+
+**In the argument list, there MUST be one space after each comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+```php
+<?php
+
+bar();
+$foo->bar($arg1);
+Foo::bar($arg2, $arg3);
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#44-methods-and-functions)
+
+`function ($skillCodename, $skill)`
+
+##### ✤ Closure arguments with default values placement in closure definition/call
+
+**Closure arguments with default values MUST go at the end of the argument list.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+`function ($skillCodename = 'programming', $skill = ['name' => 'Programming', 'level' => 3])`
+
+##### ✤ List of function/closure arguments split acros multi lines in closure definition/call
+
+**Argument lists MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+
+##### ✤ Arguments placement on list of function/closure arguments split acros multi lines in closure definition/call
+
+**When doing so, the first item in the list MUST be on the next line.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+
+```php
+<?php
+
+$foo->bar(
+    $longArgument,
+    $longerArgument,
+    $muchLongerArgument
+);
+<?php
+
+somefunction($foo, $bar, [
+  // ...
+], $baz);
+
+$app->get('/hello/{name}', function ($name) use ($app) {
+    return 'Hello ' . $app->escape($name);
+});
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+
+##### ✤ Number of arguments per line on list of function/closure arguments split acros multi lines in closure definition/call
+
+**There MUST be only one argument per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+
+##### ✤ Closing parenthesis and opening brace in closure with list of closure arguments split acros multi lines in closure definition/call
+
+**When the argument list is split across multiple lines, the closing parenthesis and opening brace MUST be placed together on their own line with one space between them.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+```php
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function aVeryLongMethodName(
+        ClassTypeHint $arg1,
+        &$arg2,
+        array $arg3 = []
+    ) {
+        // method body
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+
+```php
+function (
+    $skillCodename,
+    $skill
+) {
+}
+```
+
+### Keyword `use`
+
+The following are examples of closures with and without argument lists and variable lists split across multiple lines.
+##### ✤ Space before `use` keyword in closure definition
+
+**Closures MUST be declared with a space before the `use` keyword.**
+[🔗](https://www.php-fig.org/psr/psr-12/#7-closures)
+
+##### ✤ Space after `use` keyword in closure definition
+
+**Closures MUST be declared with a space after the `use` keyword.**
+[🔗](https://www.php-fig.org/psr/psr-12/#7-closures)
+
+##### ✤ Keyword `use` in closure declaration
+
+**If the `use` keyword is present, the colon MUST follow the use list closing parentheses with no spaces between the two characters.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+A closure declaration looks like the following. Note the placement of parentheses, commas, spaces, and braces:
+
+```php
+<?php
+
+$closureWithArgs = function ($arg1, $arg2) {
+    // ...
+};
+
+$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
+    // ...
+};
+
+$closureWithArgsVarsAndReturn = function ($arg1, $arg2) use ($var1, $var2): bool {
+    // ...
+};
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#7-closures)
+
+### Variable list
+
+##### ✤ Space after opening parethensis of variable list in closure definition/call
+
+**There MUST NOT be a space after the opening parenthesis of the variable list.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space before closing parethensis of variable list in closure definition/call
+
+**There MUST NOT be a space before the closing parenthesis of the variable list.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space before coma on variable list in closure definition/call
+
+**In the variable list, there MUST NOT be a space before each comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space after coma on variable list in closure definition/call
+
+**In the variable list, there MUST be one space after each comma.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+`function ($skillCodename, $skill) use ($levelMarkChar, $newLineSeq)`
+
+##### ✤ List of closure variables split acros multi lines in closure definition/call
+
+**Variable lists MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Variables placement in list of closure variables split acros multi lines in closure definition/call
+
+**When doing so, the first item in the list MUST be on the next line.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Number of variables per line on list of closure variables split acros multi lines in closure definition/call
+
+**There MUST be only one variable per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Closing parenthesis and opening brace in closure with list of closure variables split acros multi lines in closure definition/call
+
+**When the ending list of variables is split across multiple lines, the closing parenthesis and opening brace MUST be placed together on their own line with one space between them.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+```php
+function ($skillCodename, $skill) use (
+    $levelMarkChar,
+    $newLineSeq
+) {
+}
+```
+
+The following are examples of closures with and without argument lists and variable lists split across multiple lines.
+
+```php
+<?php
+
+$longArgs_noVars = function (
+    $longArgument,
+    $longerArgument,
+    $muchLongerArgument,
+) {
+   // ...
+};
+
+$noArgs_longVars = function () use (
+    $longVar1,
+    $longerVar2,
+    $muchLongerVar3,
+) {
+   // ...
+};
+
+$longArgs_longVars = function (
+    $longArgument,
+    $longerArgument,
+    $muchLongerArgument,
+) use (
+    $longVar1,
+    $longerVar2,
+    $muchLongerVar3,
+) {
+   // ...
+};
+
+$longArgs_shortVars = function (
+    $longArgument,
+    $longerArgument,
+    $muchLongerArgument,
+) use ($var1) {
+   // ...
+};
+
+$shortArgs_longVars = function ($arg) use (
+    $longVar1,
+    $longerVar2,
+    $muchLongerVar3,
+) {
+   // ...
+};
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#7-closures)
+
+Note that the formatting rules also apply when the closure is used directly in a function or method call as an argument.
+
+```php
+<?php
+
+$foo->bar(
+    $arg1,
+    function ($arg2) use ($var1) {
+        // ...
+    },
+    $arg3,
+);
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Space between method name and opening parenthesis in function call
+
+**When making a function call, there MUST NOT be a space between the method or function name and the opening parenthesis.**
+[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+
+```php
+$skillPresentation($skillCodename, $skill);
+```
+
+### Braces
+
+##### ✤ Opening brace placement in closure definition/call
+
+**The opening brace MUST go on the same line.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+##### ✤ Closing brace placement in closure definition/call
+
+**Closing brace MUST go on the next line following the body.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+```php
+function ($skillCodename, $skill) use (
+    $levelMarkChar,
+    $newLineSeq
+) {
+}
+```
+
+### Keyword `return`
+
+##### ✤ Return type declaration in closure definition
+
+**If a return type is present, it MUST follow the same rules as with normal functions and methods.**
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
+
+`function ($skillCodename, $skill) use ($levelMarkChar, $newLineSeq): void`
+
+A closure declaration looks like the following. Note the placement of parentheses, commas, spaces, and braces:
+
+```php
+<?php
+
+$closureWithArgs = function ($arg1, $arg2) {
+    // ...
+};
+
+$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
+    // ...
+};
+
+$closureWithArgsVarsAndReturn = function ($arg1, $arg2) use ($var1, $var2): bool {
+    // ...
+};
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#7-closures)
+
+A function declaration looks like the following. Note the placement of parentheses, commas, spaces, and braces:
+
+```php
+<?php
+
+function fooBarBaz($arg1, &$arg2, $arg3 = [])
+{
+    // ...
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
+
+##### ✤ Short closure form
+
+**Short closures, also known as arrow functions, MUST follow the same guidelines and principles as long closures above, with the following additions.**
+[🔗](https://www.php-fig.org/per/coding-style/#71-short-closures)
+
+##### ✤ Short closure fn keyword and space
+
+**The fn keyword MUST NOT be succeeded by a space.**
+[🔗](https://www.php-fig.org/per/coding-style/#71-short-closures)
+
+##### ✤ Short closure => symbol and spaces
+
+**The => symbol MUST be preceded and succeeded by a space.**
+[🔗](https://www.php-fig.org/per/coding-style/#71-short-closures)
+
+##### ✤ Short closure expression semicolon and a space
+
+**The semicolon at the end of the expression MUST NOT be preceded by a space.**
+[🔗](https://www.php-fig.org/per/coding-style/#71-short-closures)
+
+##### ✤ Short closure expression splitting into many lines
+
+**The expression portion MAY be split to a subsequent line. If so, the => MUST be included on the second line, and MUST be indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#71-short-closures)
+
+The following examples show proper common usage of short closures.
+
+```php
+$func = fn(int $x, int $y): int => $x + $y;
+
+$func = fn(int $x, int $y): int
+    => $x + $y;
+
+$func = fn(
+    int $x,
+    int $y,
+): int
+    => $x + $y;
+
+$result = $collection->reduce(fn(int $x, int $y): int => $x + $y, 0);
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
 
 ##### ✤ Function callable references
 
