@@ -854,6 +854,140 @@ Specifically:
 **Abbreviations, acronyms, and initialisms SHOULD be treated like regular words, thus they SHOULD be written with an uppercase first character, followed by lowercase characters.**
 [🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
 
+## Operators
+
+Style rules for operators are grouped by arity (the number of operands they take).
+
+When space is permitted around an operator, multiple spaces MAY be used for readability purposes.
+
+All operators not described here are left undefined.
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#6-operators)
+
+### Operator's placement
+
+##### ✤ Splitting statement with operator into multiple lines
+
+**A statement that includes an operator MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#64-operators-placement)
+
+##### ✤ Operator placement in statement splitted into multiple lines
+
+**When doing so, the operator MUST be placed at the beginning of the new line; ternaries MUST occupy 3 lines, never 2.**
+[🔗](https://www.php-fig.org/per/coding-style/#64-operators-placement)
+
+For example:
+
+```php
+<?php
+
+$variable1 = $ternaryOperatorExpr
+    ? 'fizz'
+    : 'buzz';
+
+$variable2 = $possibleNullableExpr
+    ?? 'fallback';
+
+$variable3 = $elvisExpr
+    ?: 'qix';
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#64-operators-placement)
+
+##### ✤ Multiple spaces around an operator
+
+**When space is permitted around an operator, multiple spaces MAY be used for readability purposes.**
+[🔗](https://www.php-fig.org/psr/psr-12/#6-operators)
+
+```php
+$this->email = 'author@'
+    . self::EMAIL_DOMAIN;
+```
+
+### Unary operators
+
+##### ✤ Space between the operator and operand in the increment & decrement operators
+
+**The increment/decrement operators MUST NOT have any space between the operator and operand.**
+[🔗](https://www.php-fig.org/per/coding-style/#61-unary-operators)
+
+```php
+$i++;
+++$j;
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#61-unary-operators)
+
+```php
+$this->level++;
+```
+
+##### ✤ Space within the parentheses in type casting operators
+
+**Type casting operators MUST NOT have any space within the parentheses and MUST be separated from the variable they are operating on by exactly one space.**
+[🔗](https://www.php-fig.org/psr/psr-12/#6-operators)
+
+```php
+$intValue = (int) $input;
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#61-unary-operators)
+
+```php
+$isWorking = (bool) $this->level;
+```
+
+### Binary operators
+
+##### ✤ Spaces around the binary arithmetic, comparison, assignment, bitwise, logical, string, and type operators
+
+**All binary arithmetic, comparison, assignment, bitwise, logical, string, and type operators MUST be preceded and followed by at least one space.**
+[🔗](https://www.php-fig.org/per/coding-style/#62-binary-operators)
+
+```php
+if ($a === $b) {
+    $foo = $bar ?? $a ?? $b;
+} elseif ($a > $b) {
+    $foo = $a + $b * $c;
+}
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#62-binary-operators)
+
+```php
+$this->email = 'author@' . self::EMAIL_DOMAIN;
+```
+
+### Ternary operators
+
+When the middle operand of the conditional operator is omitted, the operator MUST follow the same style rules as other binary comparison operators:
+
+$variable = $foo ?: 'bar';
+
+##### ✤ Spaces around the characters of the conditional operator
+
+**The conditional operator, also known simply as the ternary operator, MUST be preceded and followed by at least one space around both the `?` and `:` characters.**
+[🔗](https://www.php-fig.org/per/coding-style/#63-ternary-operators)
+
+```php
+$variable = $foo ? 'foo' : 'bar';
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#63-ternary-operators)
+
+```php
+$label = empty($this->nickname) ? $this->firstName : $this->nickname;
+```
+
+##### ✤ Spaces around the characters of the conditional operator when the middle operand is omitted
+
+**When the middle operand of the conditional operator is omitted, the operator MUST follow the same style rules as other binary comparison operators.**
+[🔗](https://www.php-fig.org/psr/psr-12/#63-ternary-operators)
+
+```php
+$isActive = $this->isRegistered ?: (bool) $this->level;
+```
+
 ## Control structures
 
 ##### ✤ Space after control structure keyword
