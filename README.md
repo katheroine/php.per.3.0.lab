@@ -2157,3 +2157,76 @@ class Example
 ```
 
 -- [PSR Documentation](https://www.php-fig.org/per/coding-style/#49-property-hooks)
+
+Abstract properties may be defined in interfaces or abstract classes, but are required to specify if they must support get operations, set operations, or both. In the case of abstract classes, they MAY include a body for one or another hook.
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property hook rules
+
+**If there is a body for any hook, then the entire hook block MUST follow the same rules as for defined hooks above.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook
+
+**The only difference is that a hook that has no body specified have a single semicolon after the hook keyword, with no space before it.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+```php
+abstract class Example {
+    abstract public string $name {
+        get => ucfirst($this->name);
+        set;
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook operation block
+
+**If there is no body for either hook, the operation block MUST be on the same line as the property.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook and space between the property name and the operation block
+
+**If there is no body for either hook, there MUST be a single space between the property name and the operation block {}.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook and space after the opening brace
+
+**If there is no body for either hook, there MUST be a single space after the opening {.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook and space before the opening brace
+
+**If there is no body for either hook, there MUST be a single space before the closing };**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook and space between the operation and the semicolon
+
+**If there is no body for either hook, there MUST NOT be a space between the operation and its required semicolon.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook multiple operations
+
+**If multiple operations are specified, they MUST be separated by a single space.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+##### ✤ Abstract property undefined hook operations precedence
+
+**The get operation MUST be listed before the set operation.**
+[🔗](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+```php
+interface Example
+{
+    public string $readable { get; }
+
+    public string $writeable { set; }
+
+    public string $both { get; set; }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
