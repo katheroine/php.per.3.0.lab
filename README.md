@@ -1907,6 +1907,62 @@ A function or method may be referenced in a way that creates a closure out of it
 **If so, the `...` MUST NOT include any whitespace before or after. That is, the correct format is foo(...).**
 [🔗](https://www.php-fig.org/per/coding-style/#48-function-callable-references)
 
+## Enumerations
+
+Enumerations (enums) MUST follow the same guidelines as classes, except where otherwise noted below.
+
+Methods in enums MUST follow the same guidelines as methods in classes.
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+##### ✤ Non-public enum methods visibility
+
+**Non-public methods MUST use private instead of protected, as enums do not support inheritance.**
+[🔗](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+##### ✤ Space between the enum name and colon in backed enum
+
+**When using a backed enum, there MUST NOT be a space between the enum name and colon.**
+[🔗](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+##### ✤ Space between the colon and the backing type in backed enum
+
+**There MUST be exactly one space between the colon and the backing type.**
+[🔗](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+This is consistent with the style for return types.
+
+##### ✤ Enum case declaration case
+
+**Enum case declarations MUST use PascalCase capitalization.**
+[🔗](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+##### ✤ Enum case declaration placement
+
+**Enum case declarations MUST be on their own line.**
+[🔗](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+##### ✤ Enum constant case
+
+**Constants in Enumerations MAY use either PascalCase or UPPER_CASE capitalization. PascalCase is RECOMMENDED, so that it is consistent with case declarations.**
+[🔗](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
+The following example shows a typical valid Enum:
+
+```php
+enum Suit: string
+{
+    case Hearts = 'H';
+    case Diamonds = 'D';
+    case Spades = 'S';
+    case Clubs = 'C';
+
+    public const Wild = self::Spades;
+}
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#9-enumerations)
+
 ## Classes
 
 The term "class" refers to all classes, interfaces, traits, and enums.
