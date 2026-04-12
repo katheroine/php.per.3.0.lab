@@ -854,6 +854,95 @@ Specifically:
 **Abbreviations, acronyms, and initialisms SHOULD be treated like regular words, thus they SHOULD be written with an uppercase first character, followed by lowercase characters.**
 [🔗](https://www.php-fig.org/per/coding-style/#26-trailing-commas)
 
+## Heredoc & nowdoc
+
+##### ✤ Heredoc and nowdoc use cases
+
+**A nowdoc SHOULD be used wherever possible. Heredoc MAY be used when a nowdoc does not satisfy requirements.**
+[🔗](https://www.php-fig.org/per/coding-style/#10-heredoc-and-nowdoc)
+
+##### ✤ Heredoc and nowdoc indentation variation
+
+**Heredoc and nowdoc syntax is largely governed by PHP requirements with the only allowed variation being indentation.**
+[🔗](https://www.php-fig.org/per/coding-style/#10-heredoc-and-nowdoc)
+
+##### ✤ Heredoc and nowdoc declaration beginning placement
+
+**Declared heredocs or nowdocs MUST begin on the same line as the context the declaration is being used in.**
+[🔗](https://www.php-fig.org/per/coding-style/#10-heredoc-and-nowdoc)
+
+##### ✤ Heredoc and nowdoc subsequent lines indentation
+
+**Subsequent lines in the heredoc or nowdoc MUST be indented once past the scope indentation they are declared in.**
+[🔗](https://www.php-fig.org/per/coding-style/#10-heredoc-and-nowdoc)
+
+The following is not allowed due to the heredoc beginning on a different line than the context it's being declared in:
+
+```php
+$notAllowed =
+<<<'COUNTEREXAMPLE'
+    This
+    is
+    not
+    allowed.
+    COUNTEREXAMPLE;
+```
+
+Instead, the heredoc MUST be declared on the same line as the variable declaration it's being set against.
+
+The following is not allowed due to the scope indention not matching the scope the heredoc is declared in:
+
+```php
+function notAllowed()
+{
+    $notAllowed = <<<'COUNTEREXAMPLE'
+This
+is
+not
+allowed.
+COUNTEREXAMPLE;
+}
+```
+
+Instead, the heredoc MUST be indented once past the indentation of the scope it's declared in.
+
+The following is an example of both heredocs and nowdocs declared in a compliant way:
+
+```php
+function allowed()
+{
+    $allowedHeredoc = <<<COMPLIANT
+        This
+        is
+        a
+        compliant
+        heredoc
+        COMPLIANT;
+
+    $allowedNowdoc = <<<'COMPLIANT'
+        This
+        is
+        a
+        compliant
+        nowdoc
+        COMPLIANT;
+
+    var_dump(
+        'foo',
+        <<<'COMPLIANT'
+            This
+            is
+            a
+            compliant
+            parameter
+            COMPLIANT,
+        'bar',
+    );
+}
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#10-heredoc-and-nowdoc)
+
 ## Operators
 
 Style rules for operators are grouped by arity (the number of operands they take).
