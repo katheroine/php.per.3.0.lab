@@ -1854,6 +1854,8 @@ function fooBarBaz($arg1, &$arg2, $arg3 = [])
 
 -- [PSR Documentation](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
 
+### Short closure form
+
 ##### ✤ Short closure form
 
 **Short closures, also known as arrow functions, MUST follow the same guidelines and principles as long closures above, with the following additions.**
@@ -3272,3 +3274,70 @@ interface Example
 ```
 
 -- [PSR Documentation](https://www.php-fig.org/per/coding-style/#410-interface-and-abstract-properties)
+
+### Anonymous classes
+
+Anonymous Classes MUST follow the same guidelines and principles as closures in the above section.
+
+```php
+<?php
+
+$instance = new class {};
+
+```
+
+-- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+##### ✤ Opening brace, class keyword and list of implements placement
+
+**The opening brace MAY be on the same line as the class keyword so long as the list of implements interfaces does not wrap.**
+[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+##### ✤ Brace placement in the class implementing many interfaces
+
+**If the list of interfaces wraps, the brace MUST be placed on the line immediately following the last interface.**
+[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+##### ✤ Parenthensis in anonymous class with no arguments
+
+**If the anonymous class has no arguments, the () after class MUST be omitted.**
+[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+
+For example:
+
+```php
+<?php
+
+// Brace on the same line
+// No arguments
+$instance = new class extends \Foo implements \HandleableInterface {
+    // ...
+};
+
+// Brace on the next line
+// Constructor arguments
+$instance = new class ($a) extends \Foo implements
+    \ArrayAccess,
+    \Countable,
+    \Serializable
+{
+    public function __construct(public int $a)
+    {
+    }
+    // ...
+};
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#8-anonymous-classes)
+
+```php
+$human = new class {};
+```
+
+```php
+$human = new class implements
+    Identifiable,
+    Presentable
+{
+};
+```
