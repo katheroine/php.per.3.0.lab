@@ -3557,3 +3557,130 @@ $human = new class implements
 {
 };
 ```
+
+## Attributes
+
+### Basics
+
+##### ✤ Opening attribute block indicator placement
+
+**Attribute names MUST immediately follow the opening attribute block indicator `#[` with no space.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+##### ✤ Parenthensis of attribute with no arguments
+
+**If an attribute has no arguments, the () MUST be omitted.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+##### ✤ Closing attribute block indicator placement
+
+**The closing attribute block indicator ] MUST follow the last character of the attribute name or the closing ) of its argument list, with no preceding space.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+The construct `#[...]` is referred to as an "attribute block" in this document.
+
+### Placement
+
+##### ✤ Attribute placement
+
+**Attributes on classes, methods, functions, constants and properties MUST be placed on their own line, immediately prior to the structure being described.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+##### ✤ Attribute on single line parameter placement
+
+**For attributes on parameters, if the parameter list is presented on a single line, the attribute MUST be placed inline with the parameter it describes, separated by a single space.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+##### ✤ Attribute on multiple lines parameter placement
+
+**If the parameter list is split into multiple lines for any reason, the attribute MUST be placed on its own line prior to the parameter, indented the same as the parameter.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+**If the parameter list is split into multiple lines, a blank line MAY be included between one parameter and the attributes of the following parameter in order to aid readability.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+##### ✤ Attribute on structure with a comment docblock
+
+**If a comment docblock is present on a structure that also includes an attribute, the comment block MUST come first, followed by any attributes, followed by the structure itself.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+**There MUST NOT be any blank lines between the docblock and attributes, or the attributes and the structure.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+**If two separate attribute blocks are used in a multi-line context, they MUST be on separate lines with no blank lines between them.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+### Compound attributes
+
+##### ✤ Compound attributes on structure with a comment docblock
+
+**If multiple attributes are placed in the same attribute block, they MUST be separated by a comma with a space following but no space preceding.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+##### ✤ Attributes splitted into multiple lines placement
+
+**If the attribute list is split into multiple lines for any reason, then the attributes MUST be placed in separate attribute blocks.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+**Those blocks may themselves contain multiple attributes provided this rule is respected.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+**If an attribute's argument list is split into multiple lines for any reason, then the attribute MUST be the only one in its attribute block.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+**If an attribute's argument list is split into multiple lines for any reason, the attribute arguments MUST follow the same rules as defined for multiline function calls.**
+[🔗](https://www.php-fig.org/per/coding-style/#12-attributes)
+
+The following is an example of valid attribute usage.
+
+```php
+#[Foo]
+#[Bar('baz')]
+class Demo
+{
+    #[Beep]
+    private Foo $foo;
+
+    public function __construct(
+        #[Load(context: 'foo', bar: true)]
+        private readonly FooService $fooService,
+
+        #[LoadProxy(context: 'bar')]
+        private readonly BarService $barService,
+    ) {}
+
+    /**
+     * Sets the foo.
+     */
+    #[Poink('narf'), Narf('poink')]
+    public function setFoo(#[Beep] Foo $new): void
+    {
+        // ...
+    }
+
+    #[Complex(
+        prop: 'val',
+        other: 5,
+    )]
+    #[Other, Stuff]
+    #[Here]
+    public function complicated(
+        string $a,
+
+        #[Decl]
+        string $b,
+
+        #[Complex(
+            prop: 'val',
+            other: 5,
+        )]
+        string $c,
+
+        int $d,
+    ): string {
+        // ...
+    }
+}
+```
+
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#12-attributes)
