@@ -943,6 +943,77 @@ function allowed()
 
 -- [PER Documentation](https://www.php-fig.org/per/coding-style/#10-heredoc-and-nowdoc)
 
+## Arrays
+
+##### ✤ Array definition syntax
+
+**Arrays MUST be declared using the short array syntax.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+```php
+<?php
+
+$arr = [];
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ Array trailing comma
+
+**Arrays MUST follow the trailing comma guidelines.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ Splitting array declaration into multiple lines
+
+**Array declarations MAY be split across multiple lines, where each subsequent line is indented once.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ First value placement in array declaration splitted into multiple lines
+
+**When doing so, the first value in the array MUST be on the next line, and there MUST be only one value per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ Opening brace placement in array declaration splitted into multiple lines
+
+**When the array declaration is split across multiple lines, the opening bracket MUST be placed on the same line as the equals sign.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ Closing brace placement in array declaration splitted into multiple lines
+
+**The closing bracket MUST be placed on the next line after the last value.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ Array value assignment number per line
+
+**There MUST NOT be more than one value assignment per line.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+##### ✤ Array value assignment lines number
+
+**Value assignments MAY use a single line or multiple lines.**
+[🔗](https://www.php-fig.org/per/coding-style/#11-arrays)
+
+The following example shows correct array usage:
+
+```php
+<?php
+
+$arr1 = ['single', 'line', 'declaration'];
+
+$arr2 = [
+    'multi',
+    'line',
+    'declaration',
+    ['values' => 1, 5, 7],
+    [
+        'nested',
+        'array',
+    ],
+];
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#11-arrays)
+
 ## Operators
 
 Style rules for operators are grouped by arity (the number of operands they take).
