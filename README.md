@@ -1057,7 +1057,7 @@ $variable3 = $elvisExpr
 ##### ✤ Multiple spaces around an operator
 
 **When space is permitted around an operator, multiple spaces MAY be used for readability purposes.**
-[🔗](https://www.php-fig.org/psr/psr-12/#6-operators)
+[🔗](https://www.php-fig.org/per/coding-style/#6-operators)
 
 ```php
 $this->email = 'author@'
@@ -1085,7 +1085,7 @@ $this->level++;
 ##### ✤ Space within the parentheses in type casting operators
 
 **Type casting operators MUST NOT have any space within the parentheses and MUST be separated from the variable they are operating on by exactly one space.**
-[🔗](https://www.php-fig.org/psr/psr-12/#6-operators)
+[🔗](https://www.php-fig.org/per/coding-style/#61-unary-operators)
 
 ```php
 $intValue = (int) $input;
@@ -1142,7 +1142,13 @@ $label = empty($this->nickname) ? $this->firstName : $this->nickname;
 ##### ✤ Spaces around the characters of the conditional operator when the middle operand is omitted
 
 **When the middle operand of the conditional operator is omitted, the operator MUST follow the same style rules as other binary comparison operators.**
-[🔗](https://www.php-fig.org/psr/psr-12/#63-ternary-operators)
+[🔗](https://www.php-fig.org/per/coding-style/#63-ternary-operators)
+
+```php
+$variable = $foo ?: 'bar';
+```
+
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#63-ternary-operators)
 
 ```php
 $isActive = $this->isRegistered ?: (bool) $this->level;
@@ -1645,7 +1651,7 @@ try {
 ##### ✤ Space after function name in function definition
 
 **Function names MUST NOT be declared with space after the method name.**
-[🔗](https://www.php-fig.org/psr/psr-12/#44-methods-and-functions)
+[🔗](https://www.php-fig.org/per/coding-style/#44-methods-and-functions)
 
 ```php
 function separate()
@@ -1655,22 +1661,6 @@ function separate()
 ```
 
 ### Argument list
-
-```php
-<?php
-
-namespace Vendor\Package;
-
-class ClassName
-{
-    public function foo(int $arg1, &$arg2, $arg3 = [])
-    {
-        // method body
-    }
-}
-```
-
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
 
 ##### ✤ Space after opening parethensis of argument list in closure definition/call
 
@@ -1692,6 +1682,8 @@ class ClassName
 **In the argument list, there MUST be one space after each comma.**
 [🔗](https://www.php-fig.org/per/coding-style/#7-closures)
 
+The following lines show correct calls:
+
 ```php
 <?php
 
@@ -1700,7 +1692,7 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#44-methods-and-functions)
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
 `function ($skillCodename, $skill)`
 
@@ -1711,19 +1703,19 @@ Foo::bar($arg2, $arg3);
 
 `function ($skillCodename = 'programming', $skill = ['name' => 'Programming', 'level' => 3])`
 
-##### ✤ List of function/closure arguments split acros multi lines in closure definition/call
+##### ✤ List of function/closure arguments split across multi lines in closure definition/call
 
 **Argument lists MAY be split across multiple lines, where each subsequent line is indented once.**
 [🔗](https://www.php-fig.org/per/coding-style/#7-closures)
-[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
-[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
-##### ✤ Arguments placement on list of function/closure arguments split acros multi lines in closure definition/call
+##### ✤ Arguments placement on list of function/closure arguments split across multi lines in closure definition/call
 
 **When doing so, the first item in the list MUST be on the next line.**
 [🔗](https://www.php-fig.org/per/coding-style/#7-closures)
-[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
-[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
 ```php
 <?php
@@ -1733,6 +1725,9 @@ $foo->bar(
     $longerArgument,
     $muchLongerArgument
 );
+```
+
+```php
 <?php
 
 somefunction($foo, $bar, [
@@ -1744,14 +1739,14 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
-##### ✤ Number of arguments per line on list of function/closure arguments split acros multi lines in closure definition/call
+##### ✤ Number of arguments per line on list of function/closure arguments split across multi lines in closure definition/call
 
 **There MUST be only one argument per line.**
 [🔗](https://www.php-fig.org/per/coding-style/#7-closures)
-[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
-[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
 ##### ✤ Closing parenthesis and opening brace in closure with list of closure arguments split acros multi lines in closure definition/call
 
@@ -1768,14 +1763,14 @@ class ClassName
     public function aVeryLongMethodName(
         ClassTypeHint $arg1,
         &$arg2,
-        array $arg3 = []
+        array $arg3 = [],
     ) {
-        // method body
+        // ...
     }
 }
 ```
 
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+-- [PER Documentation](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
 
 ```php
 function (
@@ -1787,16 +1782,15 @@ function (
 
 ### Keyword `use`
 
-The following are examples of closures with and without argument lists and variable lists split across multiple lines.
 ##### ✤ Space before `use` keyword in closure definition
 
 **Closures MUST be declared with a space before the `use` keyword.**
-[🔗](https://www.php-fig.org/psr/psr-12/#7-closures)
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
 
 ##### ✤ Space after `use` keyword in closure definition
 
 **Closures MUST be declared with a space after the `use` keyword.**
-[🔗](https://www.php-fig.org/psr/psr-12/#7-closures)
+[🔗](https://www.php-fig.org/per/coding-style/#7-closures)
 
 ##### ✤ Keyword `use` in closure declaration
 
@@ -1946,7 +1940,7 @@ $foo->bar(
 ##### ✤ Space between method name and opening parenthesis in function call
 
 **When making a function call, there MUST NOT be a space between the method or function name and the opening parenthesis.**
-[🔗](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+[🔗](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
 ```php
 $skillPresentation($skillCodename, $skill);
@@ -2143,9 +2137,7 @@ class MyException extends \RuntimeException {}
 
 -- [PER Documentation](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
 
-### Instantiating classes
-
-##### ✤ Parentheses in class instantiation
+### Class instantiating
 
 **When instantiating a new class, parentheses MUST always be present even when there are no arguments passed to the constructor.**
 [🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
@@ -2157,6 +2149,10 @@ new Foo();
 ```
 
 -- [PER Documentation](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+```php
+$user = new User();
+```
 
 ##### ✤ Accessing a class member immediately after instantiating
 
@@ -2183,15 +2179,22 @@ And the following SHOULD be avoided:
 
 ### Extending classes
 
-
-
-The following is a validly formatted class:
-
-
 ##### ✤ Keyword `extends` placement in class definition
 
 **The `extends` keyword MUST be declared on the same line as the class name.**
-[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+##### ✤ Opening brace of the extended class placement
+
+**The opening brace for the class MUST go on its own line, and MUST NOT be preceded or followed by a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+##### ✤ Closing brace of the extended class placement
+
+**The closing brace for the class MUST go on its own line, immediately following the last line of the class body, and MUST NOT be preceded by a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+The following is a validly formatted class:
 
 ```php
 <?php
@@ -2223,6 +2226,8 @@ class User extends Technician
 
 **When doing so, the first item in the list MUST be on the next line, and there MUST be only one interface per line.**
 [🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+For example:
 
 ```php
 <?php
@@ -2275,6 +2280,16 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
 
 **The `implements` keyword MUST be declared on the same line as the class name.**
 [🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
+
+##### ✤ Opening brace of the interface implementing class placement
+
+**The opening brace for the class MUST go on its own line, and MUST NOT be preceded or followed by a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
+
+##### ✤ Closing brace of the interface implementing class placement
+
+**The closing brace for the class MUST go on its own line, immediately following the last line of the class body, and MUST NOT be preceded by a blank line.**
+[🔗](https://www.php-fig.org/per/coding-style/#41-extends-and-implements)
 
 ```php
 <?php
@@ -2866,7 +2881,7 @@ $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
 ```
 
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#47-method-and-function-calls)
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#47-method-and-function-calls)
 
 `public function setName($firstName, $middleName, $lastName)`
 
@@ -2929,7 +2944,7 @@ public function process(string $algorithm, &...$parts)
 ##### ✤ Method arguments with default values placement
 
 **Method parameters with default values MUST go at the end of the argument list.**
-[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
 
 For example:
 
@@ -2964,7 +2979,7 @@ class ClassName
 ##### ✤ Number of arguments per line on list of method arguments split acros multi lines in method definition/call
 
 **There MUST be only one argument per line.**
-[🔗](https://www.php-fig.org/psr/psr-12/#45-method-and-function-arguments)
+[🔗](https://www.php-fig.org/per/coding-style/#45-method-and-function-parameters)
 
 ##### ✤ Closing parenthesis and opening brace in method with list of method arguments split acros multi lines in method definition
 
@@ -3154,7 +3169,7 @@ class ReturnTypeVariations
 ##### ✤ Comments or statements following closing brace in method definition
 
 **Any closing brace MUST NOT be followed by any comment or statement on the same line.**
-[🔗](https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods)
+[🔗](https://www.php-fig.org/per/coding-style/#4-classes-properties-and-methods)
 
 ```php
 public function getName(): string
@@ -3169,72 +3184,6 @@ public function getName(): string
 
 ```php
 $htmlDoc->setAuthor($htmlDocAuthor);
-```
-
-### Class instantiating
-
-##### ✤ Parentheses in class instantiating
-
-**When instantiating a new class, parentheses MUST always be present even when there are no arguments passed to the constructor.**
-[🔗](https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods)
-
-```php
-new Foo();
-```
-
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods)
-
-```php
-$user = new User();
-```
-
-### Anonymous classes
-
-Anonymous Classes MUST follow the same guidelines and principles as closures in the above section.
-
-```php
-<?php
-
-$instance = new class {};
-```
-
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
-
-##### ✤ Opening brace, class keyword and list of implements placement
-
-**The opening brace MAY be on the same line as the class keyword so long as the list of implements interfaces does not wrap. If the list of interfaces wraps, the brace MUST be placed on the line immediately following the last interface.**
-[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
-
-```php
-<?php
-
-// Brace on the same line
-$instance = new class extends \Foo implements \HandleableInterface {
-    // Class content
-};
-
-// Brace on the next line
-$instance = new class extends \Foo implements
-    \ArrayAccess,
-    \Countable,
-    \Serializable
-{
-    // Class content
-};
-```
-
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
-
-```php
-$human = new class {};
-```
-
-```php
-$human = new class implements
-    Identifiable,
-    Presentable
-{
-};
 ```
 
 ### Property Hooks
@@ -3502,22 +3451,22 @@ $instance = new class {};
 
 ```
 
--- [PSR Documentation](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+-- [PSR Documentation](https://www.php-fig.org/per/coding-style/#8-anonymous-classes)
 
 ##### ✤ Opening brace, class keyword and list of implements placement
 
 **The opening brace MAY be on the same line as the class keyword so long as the list of implements interfaces does not wrap.**
-[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+[🔗](https://www.php-fig.org/per/coding-style/#8-anonymous-classes)
 
 ##### ✤ Brace placement in the class implementing many interfaces
 
 **If the list of interfaces wraps, the brace MUST be placed on the line immediately following the last interface.**
-[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+[🔗](https://www.php-fig.org/per/coding-style/#8-anonymous-classes)
 
 ##### ✤ Parenthensis in anonymous class with no arguments
 
 **If the anonymous class has no arguments, the () after class MUST be omitted.**
-[🔗](https://www.php-fig.org/psr/psr-12/#8-anonymous-classes)
+[🔗](https://www.php-fig.org/per/coding-style/#8-anonymous-classes)
 
 For example:
 
